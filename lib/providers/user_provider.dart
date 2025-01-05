@@ -22,6 +22,7 @@ class UserProvider with ChangeNotifier {
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
       final userPageResponse = UserPageResponse.fromJson(data);
+      _users.clear();
       _users.addAll(userPageResponse.users);
       notifyListeners();
     } else {
